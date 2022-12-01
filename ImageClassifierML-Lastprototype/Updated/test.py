@@ -53,7 +53,7 @@ def median(image):
       
 
 
-f=r'C:\Users\USER\Desktop\HadiMaherIntegrated\ImageClassifierML\Updated\test'
+f=r'C:\Users\sawwa\OneDrive\Desktop\New folder (8)\New folder\Image-Denoiser-main\ImageClassifierML-Lastprototype\Updated\test'
 y=os.listdir(f)
 
 
@@ -91,11 +91,11 @@ if(case==1):
     Modelcase=int(Modelcase)
     if(Modelcase==1):
         model=load_model('ClassifierModelA')
-        x=os.listdir(r'C:\Users\USER\Desktop\HadiMaherIntegrated\ImageClassifierML\Updated\Noises1')
+        x=os.listdir(r'C:\Users\sawwa\OneDrive\Desktop\New folder (8)\New folder\Image-Denoiser-main\ModelANoises')
         output=model.predict(imgs)
     else:
         model=load_model('ClassifierModelB')
-        x=os.listdir(r'C:\Users\USER\Desktop\HadiMaherIntegrated\ImageClassifierML\Updated\Noises2')
+        x=os.listdir(r'C:\Users\sawwa\OneDrive\Desktop\New folder (8)\New folder\Image-Denoiser-main\ModelBNoises')
         output=model.predict(imgs)
 
 
