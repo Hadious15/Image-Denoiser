@@ -6,6 +6,7 @@ import { Output, Original } from '../Components'
 import axios from 'axios'
 import { ArrowNarrowRightIcon } from '@heroicons/react/solid'
 import { Loader } from '../Components'
+import Link from 'next/link'
 const Home = () => {
   const [image, setImage] = useState('')
   const [open, setOpen] = useState(false)
@@ -28,21 +29,32 @@ const Home = () => {
     }
     await uploadBytes(storageRef, file, metadata)
     getDownloadURL(storageRef).then(async (res) => {
+      console.log(res)
       setImage(res)
       setOpen(true)
+      axios
+        .post('http://127.0.0.1:5000/upload', {
+          image: res,
+        })
+        .then((res2) => {
+          setLoading(false)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     })
   }
-  console.log(data.url)
+
   return (
     <div className="bg-cover   items-center  bg-top bg-[url('https://media.idownloadblog.com/wp-content/uploads/2020/07/iPad-gradient-wallpaper-idownloadblog-V8byArthur1992as.jpeg')]">
       {' '}
-      <div className="flex justify-end p-4 text-lg">
-        <a
+      <div className="flex justify-end p-4 text-lg text-gray-100">
+        <Link
           href="/aiTool"
           className="   items-center border-b-2  px-1 pt-1 text-md font-medium text-gray-100 hover:border-gray-700 hover:text-gray-700"
         >
           AiTool >>
-        </a>
+        </Link>
       </div>
       <div className="min-h-screen bg-cover  flex  justify-center items-center  bg-top bg-[url('https://media.idownloadblog.com/wp-content/uploads/2020/07/iPad-gradient-wallpaper-idownloadblog-V8byArthur1992as.jpeg')]">
         <ImageViewer
@@ -83,9 +95,9 @@ const Home = () => {
             </div>
           )}
           {image !== '' && view === true && !loading && (
-            <div className="flex items-center">
+            <div className="flex items-center justify-center">
               <Original image={image} message="Original Image" />
-              <ArrowNarrowRightIcon className="h-40 w-40 text-indigo-700" />
+              <ArrowNarrowRightIcon className="h-44 w-52 text-indigo-700" />
               {edgeDetection !== '' && (
                 <Original
                   image={edgeDetection}

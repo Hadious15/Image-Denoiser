@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Loader, DalleOutput } from '../Components'
 import BackgroundImage from '../Image/background.jpeg'
+import Link from 'next/link'
 
 const Dalle = () => {
   const [prompt, setprompt] = useState('')
@@ -22,7 +23,8 @@ const Dalle = () => {
       .post('http://127.0.0.1:5000/dalle', { prompt: prompt })
       .then((res) => {
         setImageUrl(res.data)
-        console.log(res)
+        console.log(res.data)
+
         setLoading(false)
       })
       .catch((err) => {
@@ -39,13 +41,13 @@ const Dalle = () => {
       className="  min-h-screen bg-no-repeat bg-scroll bg-[url('https://media.idownloadblog.com/wp-content/uploads/2020/07/iPad-gradient-wallpaper-idownloadblog-V8byArthur1992as.jpeg')]"
     >
       {' '}
-      <div className="flex justify-end p-4 text-lg">
-        <a
+      <div className="flex justify-end p-4 text-lg text-gray-100">
+        <Link
           href="http://localhost:3000"
           className="   items-center border-b-2  px-1 pt-1 text-md font-medium text-gray-100 hover:border-gray-700 hover:text-gray-700"
         >
           Home >>
-        </a>
+        </Link>
       </div>
       <div className="flex  justify-center items-start ">
         <div>

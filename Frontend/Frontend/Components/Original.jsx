@@ -6,7 +6,7 @@ const Output = (props) => {
   const { image, message } = props
 
   return (
-    <div className="bg-white bg-opacity-25 p-2 rounded-lg">
+    <div className="bg-white w-[400px] bg-opacity-25 p-2 rounded-lg">
       <div className="">
         <img src={image} className="w-96 h-96 rounded-md" />
       </div>

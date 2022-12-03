@@ -17,6 +17,7 @@ const ImageViewer = (props) => {
   } = props
   const edgeClick = () => {
     setOpen(false)
+    setLoading(true)
     axios
       .post('http://127.0.0.1:5000/edgeDetection', {
         image: imageUrl,
@@ -32,6 +33,7 @@ const ImageViewer = (props) => {
   }
   const noiseDetectionClick = () => {
     setOpen(false)
+    setLoading(true)
     axios
       .post('http://127.0.0.1:5000/noise', {
         image: imageUrl,
@@ -101,7 +103,8 @@ const ImageViewer = (props) => {
               <div className="flex justify-center">
                 <div className="">
                   <div className="text-sm break-normal italic">
-                    Model A: Salt&Pepper/Speckle
+                    Model A: Salt&Pepper/Speckle{' '}
+                    <strong>(default if not specified)</strong>
                   </div>
                   <div className="text-sm break-normal italic">
                     Model B: Exponential/Guassian/Rayleigh/Uniform/Poisson
